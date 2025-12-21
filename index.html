@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Tracker</title>
+</head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f6f8; /* Soft light blue-gray for the whole page */
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #333333; /* Dark gray for title */
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #cccccc;
+  padding: 8px;
+  text-align: left;
+  background-color: #ffffff; /* White for normal cells */
+  color: #333333;
+}
+
+tr:nth-child(even) td {
+  background-color: #f5f5f5; /* Light gray for even rows */
+}
+
+/* Fail row highlight */
+.fail-row td {
+  background-color: #f8d7da; /* soft red/pink */
+  color: #721c24;
+}
+
+/* Form styling */
+form {
+  border: 1px solid #cccccc;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #6fa3ef; /* soft blue for form */
+  color: white;
+  border-radius: 8px;
+}
+
+/* Inputs */
+input[type="text"], input[type="number"] {
+  padding: 8px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  width: 150px;
+}
+
+/* Add button */
+button#button {
+  padding: 8px 12px;
+  background-color: #ffb74d; /* warm orange */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button#button:hover {
+  background-color: #ffa726; /* slightly darker orange on hover */
+}
+
+/* Delete button */
+button.delete-btn {
+  background-color: #dc3545; /* red */
+  color: white;
+  border-radius: 4px;
+  padding: 4px 8px;
+  border: none;
+  cursor: pointer;
+}
+
+button.delete-btn:hover {
+  background-color: #c82333; /* darker red */
+}
+
+/* Average display */
+#average {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+</style>
+
+<body>
+  <p id="average">Average: N/A</p>
+      <h1>Student Tracker</h1>
+      <form style="border: 1px solid; padding: 10px; margin-bottom: 10px;background-color: burlywood;color: white;">
+        <input type="text" id="nameInput" placeholder="Name" />
+        <input type="number" id="gradeInput" placeholder="Grade" />
+        <button style="background-color: bisque;" type="button" id="button"> Add Student</button>
+      </form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Grade</th>
+            <th>Letter</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+  
+    </div>
+     <script src="./index.js" defer></script>
+</body>
+</html>
