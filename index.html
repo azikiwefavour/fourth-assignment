@@ -1,127 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Tracker</title>
-</head>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f6f8; /* Soft light blue-gray for the whole page */
-  margin: 0;
-  padding: 20px;
-}
+    <style>
+      /* Body background */
+      body {
+        background-color: #f0f8ff; /* soft blue */
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
 
-h1 {
-  color: #333333; /* Dark gray for title */
-}
+      /* Form styling */
+      form {
+        border: 2px solid #007bff; /* blue border */
+        padding: 15px;
+        margin-bottom: 15px;
+        background-color: lightskyblue; /* bright blue background */
+        border-radius: 8px;
+      }
 
-/* Table styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+      /* Input fields inside form */
+      form input[type="text"],
+      form input[type="number"] {
+        background-color: white; /* input background */
+        color: black; /* text color */
+        border: 1px solid #000; /* border color */
+        padding: 8px;
+        border-radius: 4px;
+        width: 150px;
+        margin-right: 10px;
+      }
 
-td, th {
-  border: 1px solid #cccccc;
-  padding: 8px;
-  text-align: left;
-  background-color: #ffffff; /* White for normal cells */
-  color: #333333;
-}
+      /* Add Student button inside form */
+      form button#button {
+        background-color: #007bff; /* blue button */
+        color: black; /* white text */
+        border: none;
+        border-radius: 4px;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
 
-tr:nth-child(even) td {
-  background-color: #f5f5f5; /* Light gray for even rows */
-}
+      form button#button:hover {
+        background-color: #0056b3; /* darker blue on hover */
+      }
 
-/* Fail row highlight */
-.fail-row td {
-  background-color: #f8d7da; /* soft red/pink */
-  color: #721c24;
-}
+      /* Delete button */
+      button.delete-btn {
+        background-color: #dc3545; /* red */
+        color: white;
+        border-radius: 4px;
+        padding: 4px 8px;
+        border: none;
+        cursor: pointer;
+      }
 
-/* Form styling */
-form {
-  border: 1px solid #cccccc;
-  padding: 15px;
-  margin-bottom: 15px;
-  background-color: #6fa3ef; /* soft blue for form */
-  color: white;
-  border-radius: 8px;
-}
+      button.delete-btn:hover {
+        background-color: #c82333; /* darker red */
+      }
 
-/* Inputs */
-input[type="text"], input[type="number"] {
-  padding: 8px;
-  margin-right: 10px;
-  border-radius: 4px;
-  border: 1px solid #cccccc;
-  width: 150px;
-}
+      /* Table styling */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
 
-/* Add button */
-button#button {
-  padding: 8px 12px;
-  background-color: #ffb74d; /* warm orange */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+      th {
+        background-color: #007bff; /* blue header */
+        color: black;
+        padding: 10px;
+        text-align: left;
+      }
 
-button#button:hover {
-  background-color: #ffa726; /* slightly darker orange on hover */
-}
+      td {
+        padding: 8px;
+        border: 1px solid #ccc;
+        background-color: white;
+        color: black;
+      }
 
-/* Delete button */
-button.delete-btn {
-  background-color: #dc3545; /* red */
-  color: white;
-  border-radius: 4px;
-  padding: 4px 8px;
-  border: none;
-  cursor: pointer;
-}
+      tr:nth-child(even) td {
+        background-color: #f5f5f5; /* light gray for even rows */
+      }
 
-button.delete-btn:hover {
-  background-color: #c82333; /* darker red */
-}
+      /* Grade color coding */
+      .grade-a td {
+        background-color: #d4edda; /* light green */
+        color: #155724; /* dark green text */
+      }
 
-/* Average display */
-#average {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-</style>
+      .grade-b td {
+        background-color: #fff3cd; /* light yellow */
+        color: #856404; /* dark yellow text */
+      }
 
-<body>
-  <p id="average">Average: N/A</p>
-      <h1>Student Tracker</h1>
-      <form style="border: 1px solid; padding: 10px; margin-bottom: 10px;background-color: burlywood;color: white;">
-        <input type="text" id="nameInput" placeholder="Name" />
-        <input type="number" id="gradeInput" placeholder="Grade" />
-        <button style="background-color: bisque;" type="button" id="button"> Add Student</button>
-      </form>
+      .grade-c td {
+        background-color: #ffe5b4; /* light orange */
+        color: #663c00; /* dark orange text */
+      }
 
-<table class="table">
-    <thead>
+      .fail-row td {
+        background-color: #f8d7da !important; /* soft red */
+        color: #721c24 !important; /* dark red text */
+      }
+
+      /* Average display */
+      #average {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script src="./index.js" defer></script>
+    <!-- Link to your JS -->
+    <h1>Student Tracker</h1>
+    <!-- Form for adding students -->
+    <form>
+      <input type="text" id="nameInput" placeholder="Name" />
+      <input type="number" id="gradeInput" placeholder="Grade" />
+      <button type="button" id="button">Add Student</button>
+    </form>
+
+    <!-- Average grade display -->
+    <p id="average">Average: N/A</p>
+
+    <!-- Student table -->
+    <table>
+      <thead>
         <tr>
-            <th>Name</th>
-            <th>Grade</th>
-            <th>Letter</th>
-            <th>Action</th>
+          <th>Name</th>
+          <th>Grade</th>
+          <th>Letter</th>
+          <th>Action</th>
         </tr>
-    </thead>
-    <tbody id="tableBody">
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
-  
-    </div>
-     <script src="./index.js" defer></script>
-</body>
+      </thead>
+      <tbody id="tableBody">
+        <!-- Rows will be added here dynamically -->
+      </tbody>
+    </table>
+  </body>
 </html>

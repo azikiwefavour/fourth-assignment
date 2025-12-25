@@ -45,6 +45,17 @@ addButton.addEventListener('click', () => {
 
   const newRow = document.createElement("tr");
 
+  // Highlight rows based on grade
+  if (letterGrade === "Fail") {
+    newRow.classList.add("fail-row");  // red
+  } else if (letterGrade === "A") {
+    newRow.classList.add("grade-a");   // green
+  } else if (letterGrade === "B") {
+    newRow.classList.add("grade-b");   // yellow
+  } else if (letterGrade === "C") {
+    newRow.classList.add("grade-c");   // orange
+  }
+
   const nameCell = document.createElement("td");
   nameCell.textContent = nameValue;
 
@@ -57,6 +68,8 @@ addButton.addEventListener('click', () => {
   const actionCell = document.createElement("td");
   const deleteBtn = document.createElement("button");
   deleteBtn.textContent = "Delete";
+  deleteBtn.classList.add("delete-btn"); // red Delete button
+
   deleteBtn.addEventListener("click", () => {
     const index = grades.indexOf(gradeNumber);
     if (index > -1) grades.splice(index, 1);
